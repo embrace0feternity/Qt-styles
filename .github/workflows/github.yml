@@ -17,9 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     name: build-project
     steps:
+      - uses: actions/checkout@v2
       - name: build
         run: |
           ls -la
-          mkdir cmake-build-debug 
-          cd cmake-build-debug 
+          mkdir build
+          cd build
+          cmake ..
+          cmake --build .
           ls -la
