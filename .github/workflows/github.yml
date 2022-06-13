@@ -13,3 +13,13 @@ jobs:
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
+  build:
+    runs-on: ubuntu-latest
+    name: build-project
+    steps:
+      - name: create dir
+        run: mkdir cmake-build-debug && cd cmake-build-debug
+      - name: run cmake
+        run: cmake ..
+      - name: build project
+        run: cmake --build .
