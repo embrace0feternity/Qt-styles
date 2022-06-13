@@ -7,9 +7,9 @@ jobs:
     steps:
       - name: Hello world action step
         id: dirName
-        uses: actions/hello-world-docker-action@v1
+        uses: actions/hello-world-docker-action@v2
         with:
-          who-to-greet: 'e0fe'
+          build_type: 'Release'
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "Current dir is ${{ steps.dirName.outputs.currentDir }}"
