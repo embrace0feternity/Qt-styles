@@ -17,9 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     name: build-project
     steps:
-      - name: create dir
-        run: mkdir cmake-build-debug && cd cmake-build-debug
-      - name: run cmake
-        run: cmake ..
-      - name: build project
-        run: cmake --build .
+      - name: build
+        run: mkdir cmake-build-debug && cd cmake-build-debug && cmake .. && |
+            cmake --build .
