@@ -7,7 +7,6 @@ jobs:
     steps:
       - name: Hello world action step
         id: dirName
-        uses: ./.github/actions/DockerContainer/action@master
         with:
           build_type: 'Release'
       # Use the output from the `hello` step
