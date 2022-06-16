@@ -9,6 +9,7 @@ jobs:
       run: |
         ls -la
         mkdir build
+        ls -la
         cd build
         cmake ..
         cmake --build .
