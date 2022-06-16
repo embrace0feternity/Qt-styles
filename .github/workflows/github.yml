@@ -5,10 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     name: get dir name
     steps:
-      - name: Hello world action step
-        id: dirName
-        with:
-          build_type: 'Release'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "Current dir is ${{ steps.dirName.outputs.currentDir }}"
+    - name: test qt
+      run: |
+        ls -la
+        mkdir build
+        cd build
+        cmake ..
+        cmake --build .
+        ls -la
+ 
