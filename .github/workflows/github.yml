@@ -1,12 +1,24 @@
-on: [push]
-
+on:
+  push:
+    branches:
+      - master
+      - dev
+      
 jobs:
   hello_world_job:
-    runs-on: ubuntu-latest
-    name: get dir name
+    runs-on: self-hosted
+    name: build 
     steps:
-    - uses: actions/checkout@v2
-    - name: test qt
-      run: |
-        ls -la && mkdir build && ls -la && cd build && cmake .. && cmake --build . && ls -la
+      - uses: actions/checkout@v1
+      - name: build
+        run: |
+          echo "Start build"
+          ls -la
+          mkdir cmake-build-debug
+          cd cmake-build-debug
+          cmake ..
+          cmake --build .
+          ls -la
+          
+      
  
