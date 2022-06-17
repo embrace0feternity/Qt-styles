@@ -15,6 +15,8 @@ namespace e0fe {
         StyleListWidget(QListWidget *listWidget);
         void setStyleSheetBlue();
         void setListWidgetBackground(const QColor &color);
+        void setListWidgetItemBackground(const QColor &color);
+        void setListWidgetItemSelectedBorderColor(const QColor &color);
         void apply();
     };
 

@@ -41,6 +41,8 @@ MainWindow::MainWindow(QWidget *parent)
     i2->setHidden(false);
     i3->setHidden(false);
     st->setListWidgetBackground(QColor("#FFA100"));
+    st->setListWidgetItemBackground(QColor("#70227E"));
+    st->setListWidgetItemSelectedBorderColor(QColor("#FFEE73"));
 }
 
 MainWindow::~MainWindow()
