@@ -2,6 +2,7 @@
 #define STYLE_LIST_WIDGET_HPP
 
 #include <QListWidget>
+#include <QDebug>
 
 namespace e0fe {
 

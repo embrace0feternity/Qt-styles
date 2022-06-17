@@ -5,6 +5,7 @@
 #include <QListWidget>
 #include <QPushButton>
 #include "style_list_widget.hpp"
+#include <QDebug>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
