@@ -1,6 +1,8 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.16)
 
 project(styles VERSION 0.1 LANGUAGES CXX)
+
+message("Cmake run")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -8,53 +10,40 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+message(STATUS "Cmake cxx standard: ${CMAKE_CXX_STANDARD}")
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Test Widgets REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Test Widgets REQUIRED)
 
-set(PROJECT_SOURCES
+set(STYLES_NAME styles)
+set(STYLES_SRCS
         main.cpp
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
         style_list_widget.cpp
         style_list_widget.hpp
-
 )
 
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(styles
-        MANUAL_FINALIZATION
-        ${PROJECT_SOURCES}
+add_executable(${STYLES_NAME}
+    ${STYLES_SRCS}
+)
+
+target_link_libraries(${STYLES_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+
+
+set(STYLES_TEST styles_test)
+set(STYLES_TEST_SRCS
+        ${CMAKE_CURRENT_SOURCE_DIR}/tests/styleListWidget/main.cpp
     )
-# Define target properties for Android with Qt 6 as:
-#    set_property(TARGET styles APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
-#                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
-# For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
-else()
-    if(ANDROID)
-        add_library(styles SHARED
-            ${PROJECT_SOURCES}
-        )
-# Define properties for Android with Qt 5 after find_package() calls as:
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
-    else()
-        add_executable(styles
-            ${PROJECT_SOURCES}
-        )
-    endif()
-endif()
 
-target_link_libraries(styles PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+add_executable(${STYLES_TEST}
+    ${STYLES_TEST_SRCS})
 
-set_target_properties(styles PROPERTIES
+target_link_libraries(${STYLES_TEST} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Test)
+
+set_target_properties(${STYLES_NAME} PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
 )
-
-if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(styles)
-endif()
