@@ -12,13 +12,24 @@ namespace e0fe {
     protected:
         QListWidget *mListWidget;
         QString mStyleSheet;
+    private:
+        void replaceStyleSheet(QRegularExpression &regex, QString str);
+        void setMargins(QRegularExpression &regex, const QMargins &margin);
     public:
         StyleListWidget(QListWidget *listWidget);
         void setStyleSheetBlue();
         void setListWidgetBackground(const QColor &color);
         void setListWidgetItemBackground(const QColor &color);
         void setListWidgetItemSelectedBorderColor(const QColor &color);
+
+        void setListWidgetBorderWidth(uint64_t px);
+        void setListWidgetItemBorderWidth(uint64_t px);
+
+        void setListWidgetMargin(const QMargins &margin);
+        void setListWidgetItemMargin(const QMargins &margin);
+
         void apply();
+
     };
 
 
