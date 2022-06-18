@@ -43,6 +43,7 @@ MainWindow::MainWindow(QWidget *parent)
     st->setListWidgetBackground(QColor("#FFA100"));
     st->setListWidgetItemBackground(QColor("#70227E"));
     st->setListWidgetItemSelectedBorderColor(QColor("#FFEE73"));
+    st->setListWidgetMargin(QMargins(1,2,3,4));
 }
 
 MainWindow::~MainWindow()
