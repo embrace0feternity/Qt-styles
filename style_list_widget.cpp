@@ -13,6 +13,7 @@ namespace styles {
         for (; mStyleSheet[i] != ';'; ++i);
 
         mStyleSheet.replace(j, i-j, str);
+        mStyleSheetCopy = mStyleSheet;
         apply();
     }
 
@@ -59,7 +60,9 @@ namespace styles {
               colorListWidgetItemBackground.name(),
               colorListWidgetItemSelectedBorder.name());
 
-            apply();
+        mStyleSheetCopy = mStyleSheet;
+
+        apply();
     }
 
     void StyleListWidget::setListWidgetBackground(const QColor &color)
@@ -104,6 +107,12 @@ namespace styles {
     {
         QRegularExpression reListWidgetMargin( "QListWidget::item\\ ((.)*)margin:\\ " );
         setMargins(reListWidgetMargin, margin);
+    }
+
+    void StyleListWidget::setStyleSheetWidgetInside(const QString &styleSheet)
+    {
+        mStyleSheet = mStyleSheetCopy;
+        mStyleSheet += styleSheet;
     }
 
     void StyleListWidget::apply()

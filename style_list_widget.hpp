@@ -12,10 +12,12 @@ namespace e0fe {
     protected:
         QListWidget *mListWidget;
         QString mStyleSheet;
+        QString mStyleSheetCopy;
     private:
         void replaceStyleSheet(QRegularExpression &regex, QString str);
         void setMargins(QRegularExpression &regex, const QMargins &margin);
     public:
+        StyleListWidget() = default;
         StyleListWidget(QListWidget *listWidget);
         void setStyleSheetBlue();
         void setListWidgetBackground(const QColor &color);
@@ -27,6 +29,8 @@ namespace e0fe {
 
         void setListWidgetMargin(const QMargins &margin);
         void setListWidgetItemMargin(const QMargins &margin);
+
+        void setStyleSheetWidgetInside(const QString &styleSheet);
 
         void apply();
 

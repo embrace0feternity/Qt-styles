@@ -41,10 +41,14 @@ generateExecution(${STYLES_NAME}
 
 set(STYLES_TEST styles_test)
 set(STYLES_TEST_SRCS
-        ${CMAKE_CURRENT_SOURCE_DIR}/tests/styleListWidget/main.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/tests/list_widget/list_widget.cpp
     )
 
 generateExecution(${STYLES_TEST}
     srcs ${STYLES_TEST_SRCS}
     libs Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Test
+    includeDirs ${CMAKE_CURRENT_SOURCE_DIR}
     wErr wAll)
+
+
+
