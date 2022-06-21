@@ -7,11 +7,11 @@ class Test : public QObject {
     Q_OBJECT
 private:
     QListWidget *mListWidget;
-    e0fe::styles::StyleListWidget *mStyleListWidget;
+    StyleListWidget *mStyleListWidget;
 private slots:
     void initTestCase() {
         mListWidget = new QListWidget;
-        mStyleListWidget = new e0fe::styles::StyleListWidget(mListWidget);
+        mStyleListWidget = new StyleListWidget(mListWidget);
         qDebug() << "Start a new Test ";
     }
 

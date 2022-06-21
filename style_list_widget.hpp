@@ -17,8 +17,9 @@ namespace e0fe {
         void replaceStyleSheet(QRegularExpression &regex, QString str);
         void setMargins(QRegularExpression &regex, const QMargins &margin);
     public:
-        StyleListWidget() = default;
-        StyleListWidget(QListWidget *listWidget);
+        StyleListWidget(QListWidget *listWidget): mListWidget(listWidget) {
+
+        };
         void setStyleSheetBlue();
         void setListWidgetBackground(const QColor &color);
         void setListWidgetItemBackground(const QColor &color);

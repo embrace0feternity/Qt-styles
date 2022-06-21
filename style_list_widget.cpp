@@ -27,10 +27,10 @@ namespace styles {
         replaceStyleSheet(regex, temp);
     }
 
-    StyleListWidget::StyleListWidget(QListWidget *listWidget): mListWidget(listWidget)
-    {
+//    StyleListWidget::StyleListWidget(QListWidget *listWidget): mListWidget(listWidget)
+//    {
 
-    }
+//    }
 
     void StyleListWidget::setStyleSheetBlue()
     {
