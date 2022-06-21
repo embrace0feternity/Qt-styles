@@ -35,6 +35,7 @@ set(STYLES_SRCS
 generateExecution(${STYLES_NAME}
     srcs ${STYLES_SRCS}
     libs Qt${QT_VERSION_MAJOR}::Widgets
+    wErr wAll
     )
 
 
@@ -43,7 +44,7 @@ set(STYLES_TEST_SRCS
         ${CMAKE_CURRENT_SOURCE_DIR}/tests/styleListWidget/main.cpp
     )
 
-add_executable(${STYLES_TEST}
-    ${STYLES_TEST_SRCS})
-
-target_link_libraries(${STYLES_TEST} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Test)
+generateExecution(${STYLES_TEST}
+    srcs ${STYLES_TEST_SRCS}
+    libs Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Test
+    wErr wAll)

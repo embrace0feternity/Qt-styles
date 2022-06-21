@@ -1,6 +1,7 @@
 function(generateExecution targetName)
     set(debugInfo 1)
-    message("-- Start generate target execution")
+    message("")
+    message("-- Start generate target ${targetName} (execution)")
 
     set(prefix arg)
     set(noValue wErr wAll)
@@ -29,5 +30,7 @@ function(generateExecution targetName)
 
     setFlags(${targetName} ${${prefix}_optimization} ${${prefix}_wErr} ${${prefix}_wAll} ${${prefix}_externalFlags})
 
+    get_target_property(compilerFlags ${targetName} COMPILE_OPTIONS)
+    debugPrint("\tCompilerFlags: ${compilerFlags}")
     unset(debugInfo)
 endfunction()
