@@ -22,7 +22,7 @@ private slots:
     }
 
     void checkStyleCreate() {
-        QTEST("1","1");
+        QCOMPARE("1","1");
 //        auto tempStyleSheet = mListWidget->styleSheet();
 //        if (tempStyleSheet.size() != 0)
 //            QFAIL("styleSheet isn't set in the list widget");
