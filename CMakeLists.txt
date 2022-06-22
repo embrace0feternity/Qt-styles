@@ -42,6 +42,8 @@ generateExecution(${STYLES_NAME}
 set(STYLES_TEST styles_test)
 set(STYLES_TEST_SRCS
         ${CMAKE_CURRENT_SOURCE_DIR}/tests/list_widget/list_widget.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/tests/list_widget/wrapper.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/tests/list_widget/wrapper.hpp
     )
 
 generateExecution(${STYLES_TEST}

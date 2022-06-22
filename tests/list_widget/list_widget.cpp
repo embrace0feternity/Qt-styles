@@ -1,34 +1,48 @@
 #include <QTest>
-#include "../../style_list_widget.hpp"
-
-using namespace e0fe::styles;
+#include <QLabel>
+#include "wrapper.hpp"
 
 class Test : public QObject {
     Q_OBJECT
 private:
     QListWidget *mListWidget;
-    StyleListWidget *mStyleListWidget;
+    WrapperStyleListWidget *mStyleListWidget;
 private slots:
     void initTestCase() {
         mListWidget = new QListWidget;
-        mStyleListWidget = new StyleListWidget(mListWidget);
-        qDebug() << "Start a new Test ";
+        mStyleListWidget = new WrapperStyleListWidget{mListWidget};
     }
 
     void cleanupTestCase() {
-        qDebug() << "Call after test execution";
-        delete mListWidget;
+        qDebug() << "\n";
         delete mStyleListWidget;
+        delete mListWidget;
     }
 
     void checkStyleCreate() {
-        QCOMPARE("1","1");
+        auto tempStyleSheet = mListWidget->styleSheet();
+        //const QListWidget *tempListWidget = mStyleListWidget->getListWidget();
+        //QCOMPARE(tempListWidget, mListWidget);
+
+        QCOMPARE(tempStyleSheet, mStyleListWidget->getStyleSheet());
+        QCOMPARE(tempStyleSheet.size(), mStyleListWidget->getStyleSheet().size());
+    }
+
+    void checkSetStyleBlue() {
+        QLabel l;
+        l.setText("qwer");
+        QCOMPARE(l.text(), "qwer");
+
+
+        mStyleListWidget->setStyleSheetBlue();
 //        auto tempStyleSheet = mListWidget->styleSheet();
-//        if (tempStyleSheet.size() != 0)
-//            QFAIL("styleSheet isn't set in the list widget");
+//        QCOMPARE(tempStyleSheet, mStyleListWidget->getStyleSheet());
+//        QCOMPARE(tempStyleSheet, mStyleListWidget->getStyleSheetCopy());
+
     }
 };
 
 
 QTEST_MAIN(Test)
 #include "list_widget.moc"
+

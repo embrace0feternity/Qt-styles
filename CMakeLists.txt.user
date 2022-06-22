@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 6.0.1, 2022-06-21T19:38:19. -->
+<!-- Written by QtCreator 6.0.1, 2022-06-22T21:12:18. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -69,6 +69,7 @@
    </valuemap>
    <valuemap type="QVariantMap" key="AutoTest.CheckStates">
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:Test">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetStyleBlue">Checked</value>
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkStyleCreate">Checked</value>
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:cleanupTestCase">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:initTestCase">Checked</value>
@@ -102,7 +103,7 @@
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">qt.qt6.622.gcc_64_kit</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
-   <value type="qlonglong" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
+   <value type="qlonglong" key="ProjectExplorer.Target.ActiveRunConfiguration">1</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
     <value type="QString" key="CMake.Build.Type">Debug</value>
     <value type="QString" key="CMake.Initial.Parameters">-GNinja
@@ -312,7 +313,6 @@
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/embrace0feternity/works/qt_workspace/GUI/Styles/build-styles-Desktop_Qt_6_2_2_GCC_64bit-Debug</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.1">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -329,7 +329,6 @@
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/embrace0feternity/works/qt_workspace/GUI/Styles/build-styles-Desktop_Qt_6_2_2_GCC_64bit-Debug</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">2</value>
   </valuemap>

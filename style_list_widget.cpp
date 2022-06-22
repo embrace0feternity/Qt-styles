@@ -27,11 +27,6 @@ namespace styles {
         replaceStyleSheet(regex, temp);
     }
 
-//    StyleListWidget::StyleListWidget(QListWidget *listWidget): mListWidget(listWidget)
-//    {
-
-//    }
-
     void StyleListWidget::setStyleSheetBlue()
     {
         QColor colorListWidgetBackground(0x78,0x72,0xD8);
