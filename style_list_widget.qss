@@ -1,0 +1,37 @@
+QListWidget {
+    background: #7872D8;
+    padding: 10px 3px 0px 3px;
+    border: none;
+}
+
+QListWidget::item {
+    background: #19943c;
+    border-width: none;
+    border-radius: 5;
+    margin: 5 20 5 20;
+    padding: 2 13 2 13;
+}
+
+QListWidget::item:selected {
+    background: #941927;
+    border-width: 12;
+    border-style: solid;
+    border-radius: 0;
+    margin: 5 20 5 20;
+}
+
+QListWidget::item:selected:active {
+    background: #a0bf22;
+    border-width: 12;
+    border-style: solid;
+    border-radius: 0;
+    margin: 0 0 0 0;
+}
+
+QListWidget::item:selected:!active {
+    background: #bf7622;
+    border-width: 12;
+    border-style: solid;
+    border-radius: 0;
+    margin: 0 0 0 0;
+}

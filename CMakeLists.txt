@@ -21,24 +21,6 @@ message(STATUS "Cmake cxx standard: ${CMAKE_CXX_STANDARD}")
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Test Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Test Widgets REQUIRED)
 
-set(STYLES_NAME style)
-
-set(STYLES_SRCS
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
-        style_list_widget.cpp
-        style_list_widget.hpp
-)
-
-generateExecution(${STYLES_NAME}
-    srcs ${STYLES_SRCS}
-    libs Qt${QT_VERSION_MAJOR}::Widgets
-    wErr wAll
-    )
-
-
 set(STYLES_TEST styles_test)
 set(STYLES_TEST_SRCS
         ${CMAKE_CURRENT_SOURCE_DIR}/tests/list_widget/list_widget.cpp
@@ -46,11 +28,13 @@ set(STYLES_TEST_SRCS
         ${CMAKE_CURRENT_SOURCE_DIR}/tests/list_widget/wrapper.hpp
     )
 
+message("CMAKE_CURRENT_SOURCE_DIR = ${CMAKE_CURRENT_SOURCE_DIR}S")
+
 generateExecution(${STYLES_TEST}
     srcs ${STYLES_TEST_SRCS}
     libs Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Test
-    includeDirs ${CMAKE_CURRENT_SOURCE_DIR}
     wErr wAll)
+
 
 
 

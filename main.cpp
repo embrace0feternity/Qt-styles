@@ -3,6 +3,7 @@
 #include <typeinfo>
 #include <QLabel>
 #include <QMetaProperty>
+#include <QFile>
 
 int main(int argc, char *argv[])
 {
