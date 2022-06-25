@@ -7,10 +7,10 @@ const QListWidget *WrapperStyleListWidget::getListWidget() const
 
 const QString &WrapperStyleListWidget::getStyleSheet() const
 {
-    return mStyleSheet;
+    return StyleListWidget::getStyleSheet();
 }
 
 const QString &WrapperStyleListWidget::getStyleSheetCopy() const
 {
-    return mStyleSheetCopy;
+    return StyleListWidget::getPreviousStyleSheet();
 }

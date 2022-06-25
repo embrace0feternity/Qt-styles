@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 6.0.1, 2022-06-24T18:46:07. -->
+<!-- Written by QtCreator 6.0.1, 2022-06-25T10:07:58. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -67,13 +67,7 @@
     <value type="bool" key="AutoTest.Framework.QtQuickTest">true</value>
     <value type="bool" key="AutoTest.Framework.QtTest">true</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="AutoTest.CheckStates">
-    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:Test">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetStyleBlue">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkStyleCreate">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:cleanupTestCase">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:initTestCase">Checked</value>
-   </valuemap>
+   <valuemap type="QVariantMap" key="AutoTest.CheckStates"/>
    <value type="int" key="AutoTest.RunAfterBuild">0</value>
    <value type="bool" key="AutoTest.UseGlobal">true</value>
    <valuelist type="QVariantList" key="ClangCodeModel.CustomCommandLineKey"/>
@@ -315,24 +309,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/embrace0feternity/works/qt_workspace/GUI/Styles/build-styles-Desktop_Qt_6_2_2_GCC_64bit-Debug</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.1">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">styles_test</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.styles_test</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">styles_test</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/embrace0feternity/works/qt_workspace/GUI/Styles/build-styles-Desktop_Qt_6_2_2_GCC_64bit-Debug</value>
-   </valuemap>
-   <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">2</value>
+   <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
  </data>
  <data>

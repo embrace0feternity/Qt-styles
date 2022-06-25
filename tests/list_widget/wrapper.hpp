@@ -15,6 +15,7 @@ public:
     const QString& getStyleSheet() const;
 
     const QString& getStyleSheetCopy() const;
+
 };
 
 

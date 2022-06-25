@@ -5,34 +5,39 @@ using namespace e0fe::styles;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , listWidget(this)
     , ui(new Ui::MainWindow)
+    , listWidget(new QListWidget)
 {
-
-    [[maybe_unused]] StyleListWidget *st = new StyleListWidget{&listWidget};
     ui->setupUi(this);
-    QPushButton *p1 = new QPushButton(this);
-    QPushButton *p2 = new QPushButton(this);
-    QPushButton *p3 = new QPushButton(this);
+    [[maybe_unused]] StyleListWidget *mStyleListWidget = new StyleListWidget(listWidget);
+    QColor color{0xd9, 0x27, 0x27};
+    mStyleListWidget->setListWidgetBackground(color);
+    qDebug() << listWidget->styleSheet();
+    QStringList stringList = {"#d92727", // red
+                             "#6023c2",  // dark bluer
+                             "#1cbd52",  // green
+                             "#cf9e23",  // orange
+                             "#000000"}; // black
 
+    mStyleListWidget->setListWidgetItemSelectedBackground(QColor{0x1c, 0xbd, 0x52});
 
-    QListWidgetItem *i1 = new QListWidgetItem;
-    QListWidgetItem *i2 = new QListWidgetItem;
-    QListWidgetItem *i3 = new QListWidgetItem;
+    qDebug() << "\n\n" << mStyleListWidget->getStyleSheet();
 
-    listWidget.addItem(i1);
-    listWidget.addItem(i2);
-    listWidget.addItem(i3);
-    i1->setHidden(true);
-    i2->setHidden(true);
-    i3->setHidden(true);
-    listWidget.setItemWidget(i1, p1);
-    listWidget.setItemWidget(i2, p2);
-    listWidget.setItemWidget(i3, p3);
-    ui->verticalLayout->addWidget(&listWidget);
-    i1->setHidden(false);
-    i2->setHidden(false);
-    i3->setHidden(false);
+    foreach (QString str, stringList){
+
+        QPushButton *p = new QPushButton(listWidget);
+        p->setText(str);
+
+        QListWidgetItem *i = new QListWidgetItem;
+        listWidget->addItem(i);
+        listWidget->setItemWidget(i, p);
+
+        QColor color(str);
+        mStyleListWidget->setListWidgetItemBackground(color);
+    }
+
+    qDebug() << "\n\n" << mStyleListWidget->getStyleSheet();
+    ui->vert->addWidget(listWidget);
 }
 
 MainWindow::~MainWindow()
