@@ -1,6 +1,7 @@
 QListWidget {
     background: #7872D8;
     padding: 20 3 20 3;
+    margin: 0 0 0 0;
     border: none;
 }
 
@@ -20,9 +21,9 @@ QListWidget::item:selected {
     margin: 5 20 5 20;
 }
 
-/*
+
 QListWidget::item:selected:active {
-    background: #a0bf22;
+    background: #49fcf1;
     border-width: 12;
     border-style: solid;
     border-radius: 0;
@@ -30,9 +31,10 @@ QListWidget::item:selected:active {
 }
 
 QListWidget::item:selected:!active {
-    background: #bf7622;
+    background: #140f09;
     border-width: 12;
     border-style: solid;
     border-radius: 0;
     margin: 0 0 0 0;
-}*/
+}
+

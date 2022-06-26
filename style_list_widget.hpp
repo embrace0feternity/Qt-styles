@@ -4,6 +4,8 @@
 #include <QListWidget>
 #include <QDebug>
 #include <QFile>
+#include <QStringView>
+#include <QString>
 
 namespace e0fe {
 
@@ -24,15 +26,17 @@ namespace e0fe {
         void setListWidgetBackground(const QColor &color);
         void setListWidgetItemBackground(const QColor &color);
         void setListWidgetItemSelectedBackground(const QColor &color);
+        void setListWidgetItemSelectedActiveBackground(const QColor &color);
+        void setListWidgetItemSelectedNoActiveBackground(const QColor &color);
 
         void setListWidgetBorderWidth(uint64_t px);
         void setListWidgetItemBorderWidth(uint64_t px);
 
         void setListWidgetMargin(const QMargins &margin);
-
         void setListWidgetItemMargin(const QMargins &margin);
-
-        void setStyleSheetWidgetInside(const QString &styleSheet);
+        void setListWidgetItemSelectedMargin(const QMargins &margin);
+        void setListWidgetItemSelectedActiveMargin(const QMargins &margin);
+        void setListWidgetItemSelectedNoActiveMargin(const QMargins &margin);
 
         void apply();
 

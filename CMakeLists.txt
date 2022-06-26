@@ -18,8 +18,10 @@ set(CMAKE_AUTORCC ON)
 
 message(STATUS "Cmake cxx standard: ${CMAKE_CXX_STANDARD}")
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Test Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Test Widgets REQUIRED)
+find_package(QT NAMES Qt6 COMPONENTS Test Widgets REQUIRED)
+find_package(Qt6 COMPONENTS Test Widgets REQUIRED)
+
+message("QT_VERSION_MAJOR = ${QT_VERSION_MAJOR}")
 
 set(STYLES_NAME style)
 
@@ -30,14 +32,12 @@ set(STYLES_SRCS
         mainwindow.ui
         style_list_widget.hpp
         style_list_widget.qss
-
         style_list_widget.cpp
 )
 
 generateExecution(${STYLES_NAME}
     srcs ${STYLES_SRCS}
-    libs Qt${QT_VERSION_MAJOR}::Widgets
-    wErr wAll
+    libs Qt6::Widgets
     )
 
 set(STYLES_TEST styles_test)
@@ -55,7 +55,7 @@ message("CMAKE_CURRENT_SOURCE_DIR = ${CMAKE_CURRENT_SOURCE_DIR}S")
 
 generateExecution(${STYLES_TEST}
     srcs ${STYLES_TEST_SRCS}
-    libs Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Test
+    libs Qt6::Widgets Qt6::Test
     )
 
 
