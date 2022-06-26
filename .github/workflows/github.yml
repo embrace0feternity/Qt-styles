@@ -3,7 +3,9 @@ on:
     branches:
       - master
       - dev
-      
+env:
+  Path_to_qt6: /home/embrace0feternity/Qt/6.2.2/gcc_64
+
 jobs:
   hello_world_job:
     runs-on: self-hosted
@@ -16,7 +18,7 @@ jobs:
           ls -la
           mkdir cmake-build-debug
           cd cmake-build-debug
-          cmake ..
+          cmake -DCMAKE_PREFIX_PATH="$Path_to_qt6" ..
           cmake --build .
           ls -la
           
