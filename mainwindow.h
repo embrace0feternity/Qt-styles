@@ -20,7 +20,7 @@ public:
     ~MainWindow();
 
 private:
-    QListWidget listWidget;
     Ui::MainWindow *ui;
+    QListWidget *listWidget;
 };
 #endif // MAINWINDOW_H

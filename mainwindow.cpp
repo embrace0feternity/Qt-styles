@@ -5,45 +5,39 @@ using namespace e0fe::styles;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , listWidget(this)
     , ui(new Ui::MainWindow)
+    , listWidget(new QListWidget)
 {
     ui->setupUi(this);
-    StyleListWidget *st = new StyleListWidget(&listWidget);
-    QPushButton *p1 = new QPushButton(this);
-    QPushButton *p2 = new QPushButton(this);
-    QPushButton *p3 = new QPushButton(this);
+    [[maybe_unused]] StyleListWidget *mStyleListWidget = new StyleListWidget(listWidget);
+    QColor color{0xd9, 0x27, 0x27};
+    mStyleListWidget->setListWidgetBackground(color);
+    qDebug() << listWidget->styleSheet();
+    QStringList stringList = {"#d92727", // red
+                             "#6023c2",  // dark bluer
+                             "#1cbd52",  // green
+                             "#cf9e23",  // orange
+                             "#000000"}; // black
 
+    mStyleListWidget->setListWidgetItemSelectedBackground(QColor{0x1c, 0xbd, 0x52});
 
-    p2->setStyleSheet("QPushButton: {"
-                        "background: blue;"
-                        "min-height: 50px;"
-                        ""
-                      "}"
-                      );
-    QListWidgetItem *i1 = new QListWidgetItem;
-    QListWidgetItem *i2 = new QListWidgetItem;
-    QListWidgetItem *i3 = new QListWidgetItem;
+    qDebug() << "\n\n" << mStyleListWidget->getStyleSheet();
 
-    listWidget.addItem(i1);
-    listWidget.addItem(i2);
-    listWidget.addItem(i3);
-    i1->setHidden(true);
-    i2->setHidden(true);
-    i3->setHidden(true);
-    listWidget.setItemWidget(i1, p1);
-    listWidget.setItemWidget(i2, p2);
-    listWidget.setItemWidget(i3, p3);
+    foreach (QString str, stringList){
 
-    st->setStyleSheetBlue();
-    ui->verticalLayout->addWidget(&listWidget);
-    i1->setHidden(false);
-    i2->setHidden(false);
-    i3->setHidden(false);
-    st->setListWidgetBackground(QColor("#FFA100"));
-    st->setListWidgetItemBackground(QColor("#70227E"));
-    st->setListWidgetItemSelectedBorderColor(QColor("#FFEE73"));
-    st->setListWidgetMargin(QMargins(1,2,3,4));
+        QPushButton *p = new QPushButton(listWidget);
+        p->setText(str);
+
+        QListWidgetItem *i = new QListWidgetItem;
+        listWidget->addItem(i);
+        listWidget->setItemWidget(i, p);
+
+        QColor color(str);
+        mStyleListWidget->setListWidgetItemBackground(color);
+    }
+
+    qDebug() << "\n\n" << mStyleListWidget->getStyleSheet();
+    ui->vert->addWidget(listWidget);
 }
 
 MainWindow::~MainWindow()
