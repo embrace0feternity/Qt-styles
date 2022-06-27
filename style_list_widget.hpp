@@ -16,7 +16,6 @@ namespace e0fe {
         QListWidget *mListWidget;
         QString mStyleSheet;
         QString mStyleSheetCopy;
-        QFile file{"../styles/style_list_widget.qss"};
     private:
         void replaceStyleSheet(QRegularExpression &regex, QStringView searh, const QString &replacedStr);
 

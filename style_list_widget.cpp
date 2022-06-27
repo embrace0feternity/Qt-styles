@@ -21,7 +21,8 @@ namespace e0fe {
             apply();
         }
 
-        StyleListWidget::StyleListWidget(QListWidget *listWidget): mListWidget(listWidget) {
+        StyleListWidget::StyleListWidget(QListWidget *listWidget) : mListWidget(listWidget) {
+            QFile file{"style_list_widget.qss"};
             file.open(QFile::ReadOnly);
             mStyleSheet = mStyleSheetCopy = file.readAll();
             mListWidget->setStyleSheet(mStyleSheet);

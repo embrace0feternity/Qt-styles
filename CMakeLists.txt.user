@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 6.0.1, 2022-06-25T22:06:04. -->
+<!-- Written by QtCreator 6.0.1, 2022-06-27T21:52:41. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -71,12 +71,14 @@
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:Test">Checked</value>
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetCssStyle">Checked</value>
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetListWidgetBackground">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetListWidgetMargin">Checked</value>
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkStyleCreate">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:cleanupTestCase">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:initTestCase">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:cleanupTestCase">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:initTestCase">Checked</value>
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:setListWidgetItemBackground">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:setListWidgetItemSelectedBorderColor">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:setListWidgetItemSelectedActiveBackground">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:setListWidgetItemSelectedBackground">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:setListWidgetItemSelectedNoActiveBackground">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:test">Checked</value>
    </valuemap>
    <value type="int" key="AutoTest.RunAfterBuild">0</value>
    <value type="bool" key="AutoTest.UseGlobal">true</value>
@@ -107,7 +109,7 @@
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">qt.qt6.622.gcc_64_kit</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
-   <value type="qlonglong" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
+   <value type="qlonglong" key="ProjectExplorer.Target.ActiveRunConfiguration">1</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
     <value type="QString" key="CMake.Build.Type">Debug</value>
     <value type="QString" key="CMake.Initial.Parameters">-GNinja
