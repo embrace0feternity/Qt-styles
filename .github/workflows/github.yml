@@ -7,9 +7,8 @@ env:
   Path_to_qt6: /home/embrace0feternity/Qt/6.2.2/gcc_64
 
 jobs:
-  hello_world_job:
+  build:
     runs-on: self-hosted
-    name: build 
     steps:
       - uses: actions/checkout@v1
       - name: build
@@ -20,7 +19,13 @@ jobs:
           cd cmake-build-debug
           cmake -DCMAKE_PREFIX_PATH="$Path_to_qt6" ..
           cmake --build .
-          ls -la
+          ls -ls
+  test:
+    runs-on: self-hosted
+    steps:
+      name: test
+      run: |
+        ls -la
           
       
  
