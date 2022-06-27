@@ -21,11 +21,10 @@ jobs:
           cmake --build .
           ls -ls
   test:
-    runs-on: self-hosted
+    runs-on: self-hosted 
+    needs: build
     steps:
-      name: test
-      run: |
-        ls -la
+      - run: ls -la
           
       
  
