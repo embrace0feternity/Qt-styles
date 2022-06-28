@@ -28,14 +28,17 @@ private slots:
     }
     void checkStyleCreate();                            // 1
     void checkSetCssStyle();                            // 2
-    void checkSetListWidgetBackground();                // 3
-    void setListWidgetItemBackground();                 // 4
+    void checksetBackground();                          // 3
+    void setItemBackground();                           // 4
     void setListWidgetItemSelectedBackground();         // 5
     void setListWidgetItemSelectedActiveBackground();   // 6
     void setListWidgetItemSelectedNoActiveBackground(); // 7
 
-//    void checkSetListWidgetMargin_data();
-//    void checkSetListWidgetMargin();                    //
+    void checkSetListWidgetMargin_data();
+    void checkSetListWidgetMargin();
+
+    void checkSetListWidgetPadding_data();
+    void checkSetListWidgetPadding();
 
 };
 
@@ -72,17 +75,17 @@ void Test::checkSetCssStyle()
     QVERIFY(isConsisted != -1);
 }
 
-void Test::checkSetListWidgetBackground()
+void Test::checksetBackground()
 {
     QColor pink{0xbf, 0x22, 0xb0};
-    mStyleListWidget->setListWidgetBackground(pink);
+    mStyleListWidget->setBackground(pink);
 
     QString temp = "background: #bf22b0;";
     qsizetype isConsisted = mListWidget->styleSheet().indexOf(temp, 0);
     QVERIFY(isConsisted != -1);
 
     QColor colorOrange = colorVector.at(4);
-    mStyleListWidget->setListWidgetBackground(colorOrange);
+    mStyleListWidget->setBackground(colorOrange);
 
     temp = "background: #cf9e23;";
     isConsisted = mListWidget->styleSheet().indexOf(temp, 0);
@@ -91,10 +94,10 @@ void Test::checkSetListWidgetBackground()
     QVERIFY(mStyleListWidget->getStyleSheetCopy() != mStyleListWidget->getStyleSheet());
 }
 
-void Test::setListWidgetItemBackground()
+void Test::setItemBackground()
 {
     QColor pink{0xbf, 0x22, 0xb0};
-    mStyleListWidget->setListWidgetItemBackground(pink);
+    mStyleListWidget->setItemBackground(pink);
 
     QVERIFY(mStyleListWidget->getStyleSheetCopy() != mStyleListWidget->getStyleSheet());
 
@@ -103,7 +106,7 @@ void Test::setListWidgetItemBackground()
     QVERIFY(isConsisted != -1);
 
     QColor colorBlack = colorVector.at(3);
-    mStyleListWidget->setListWidgetItemBackground(colorBlack);
+    mStyleListWidget->setItemBackground(colorBlack);
 
     temp = "background: #000000;";
     isConsisted = mListWidget->styleSheet().indexOf(temp, 0);
@@ -114,7 +117,7 @@ void Test::setListWidgetItemBackground()
 
 void Test::setListWidgetItemSelectedBackground() {
     QColor pink{0xbf, 0x22, 0xb0};
-    mStyleListWidget->setListWidgetItemSelectedBackground(pink);
+    mStyleListWidget->setItemSelectedBackground(pink);
 
     QVERIFY(mStyleListWidget->getStyleSheetCopy() != mStyleListWidget->getStyleSheet());
 
@@ -127,7 +130,7 @@ void Test::setListWidgetItemSelectedBackground() {
     QVERIFY(isConsisted == -1);
 
     QColor colorDarkBlue = colorVector.at(1);
-    mStyleListWidget->setListWidgetItemSelectedBackground(colorDarkBlue);
+    mStyleListWidget->setItemSelectedBackground(colorDarkBlue);
 
     isConsisted = mListWidget->styleSheet().indexOf(temp, 0);
     QVERIFY(isConsisted != -1);
@@ -137,7 +140,7 @@ void Test::setListWidgetItemSelectedBackground() {
 
 void Test::setListWidgetItemSelectedActiveBackground() {
     QColor colorRed = colorVector.at(0);
-    mStyleListWidget->setListWidgetItemSelectedActiveBackground(colorRed);
+    mStyleListWidget->setItemSelectedActiveBackground(colorRed);
 
     QString temp = colorRed.name();
     qsizetype isConsisted = mListWidget->styleSheet().indexOf(temp, 0);
@@ -150,7 +153,7 @@ void Test::setListWidgetItemSelectedActiveBackground() {
 
 void Test::setListWidgetItemSelectedNoActiveBackground() {
     QColor colorGreen = colorVector.at(2);
-    mStyleListWidget->setListWidgetItemSelectedActiveBackground(colorGreen);
+    mStyleListWidget->setItemSelectedActiveBackground(colorGreen);
 
     QString temp = colorGreen.name();
     qsizetype isConsisted = mListWidget->styleSheet().indexOf(temp, 0);
@@ -161,44 +164,73 @@ void Test::setListWidgetItemSelectedNoActiveBackground() {
     QVERIFY(isConsisted == -1);
 }
 
-//void Test::checkSetListWidgetMargin_data()
-//{
-//    QTest::addColumn<QMargins>("setMargins");
-//    QTest::addColumn<QString>("searchedMargins");
-//    QTest::newRow("listWidgetMargin") << QMargins{1,1,1,1} << "margin: 1 1 1 1;";
-//    QTest::newRow("listWidgetMargin") << QMargins{2,2,2,2} << "margin: 2 2 2 2;";
-//    QTest::newRow("listWidgetMargin") << QMargins{3,3,3,3} << "margin: 3 3 3 3;";
-//    QTest::newRow("listWidgetMargin") << QMargins{4,4,4,4} << "margin: 4 4 4 4;";
-//    QTest::newRow("listWidgetMargin") << QMargins{5,5,5,5} << "margin: 5 5 5 5;";
-//}
+void Test::checkSetListWidgetMargin_data()
+{
+    QTest::addColumn<QMargins>("setMargins");
+    QTest::addColumn<QString>("searchedMargins");
+    QTest::newRow("listWidgetMargin") << QMargins{1,1,1,1} << "margin: 1 1 1 1;";
+    QTest::newRow("listWidgetMargin") << QMargins{2,2,2,2} << "margin: 2 2 2 2;";
+    QTest::newRow("listWidgetMargin") << QMargins{3,3,3,3} << "margin: 3 3 3 3;";
+    QTest::newRow("listWidgetMargin") << QMargins{4,4,4,4} << "margin: 4 4 4 4;";
+    QTest::newRow("listWidgetMargin") << QMargins{5,5,5,5} << "margin: 5 5 5 5;";
+}
 
-//void Test::checkSetListWidgetMargin()
-//{
-//    QFETCH(QMargins, setMargins);
-//    QFETCH(QString, searchedMargins);
-//    mStyleListWidget->setListWidgetMargin(QMargins{1,1,1,1});
-//    mStyleListWidget->setListWidgetItemMargin(QMargins{2,2,2,2});
-//    mStyleListWidget->setListWidgetItemSelectedMargin(QMargins{3,3,3,3});
-//    mStyleListWidget->setListWidgetItemSelectedActiveMargin(QMargins{4,4,4,4});
-//    mStyleListWidget->setListWidgetItemSelectedNoActiveMargin(QMargins{5,5,5,5});
+void Test::checkSetListWidgetMargin()
+{
+    QFETCH(QMargins, setMargins);
+    QFETCH(QString, searchedMargins);
+    mStyleListWidget->setMargin(QMargins{1,1,1,1});
+    mStyleListWidget->setItemMargin(QMargins{2,2,2,2});
+    mStyleListWidget->setItemSelectedMargin(3,3,3,3);
+    mStyleListWidget->setItemSelectedActiveMargin(4,4,4,4);
+    mStyleListWidget->setItemSelectedNoActiveMargin(QMargins{5,5,5,5});
+    QRegularExpression re( "QListWidget {(.)(\\ ){4}", QRegularExpression::DotMatchesEverythingOption);
 
-//    QRegularExpression re( "QListWidget {(.)(\\ ){4}", QRegularExpression::DotMatchesEverythingOption);
+    QString str;
+    QCOMPARE(str = [&](){
+        QRegularExpression re(searchedMargins);
+        QRegularExpressionMatch match = re.match(mListWidget->styleSheet());
+        if (match.hasMatch()) {
+            QString str = match.captured();
+            return str;
+        }
+        QString none = "None";
+        return none;
+    }(), searchedMargins);
+}
 
-//    QString styleSheet = mListWidget->styleSheet();
-//    QString match = re.match(styleSheet).captured();
+void Test::checkSetListWidgetPadding_data()
+{
+    QTest::addColumn<QString>("searchedPadding");
+    QTest::newRow("listWidgetMargin") << "padding: 1 1 1 1;";
+    QTest::newRow("listWidgetMargin") << "padding: 2 2 2 2;";
+    QTest::newRow("listWidgetMargin") << "padding: 3 3 3 3;";
+    QTest::newRow("listWidgetMargin") << "padding: 4 4 4 4;";
+    QTest::newRow("listWidgetMargin") << "padding: 5 5 5 5;";
+}
 
-//    QString str;
-//    QCOMPARE(str = [&](){
-//        QRegularExpression re(searchedMargins);
-//        QRegularExpressionMatch match = re.match(mListWidget->styleSheet());
-//        if (match.hasMatch()) {
-//            QString str = match.captured();
-//            return str;
-//        }
-//        QString none = "None";
-//        return none;
-//    }(), searchedMargins);
-//}
+void Test::checkSetListWidgetPadding()
+{
+    QFETCH(QString, searchedPadding);
+    mStyleListWidget->setPadding(1,1,1,1);
+    mStyleListWidget->setPaddingItem(2,2,2,2);
+    mStyleListWidget->setPaddingItemSelected(3,3,3,3);
+    mStyleListWidget->setPaddingItemSelectedActive(4,4,4,4);
+    mStyleListWidget->setPaddingItemSelectedNoActive(5,5,5,5);
+    QRegularExpression re( "QListWidget {(.)(\\ ){4}", QRegularExpression::DotMatchesEverythingOption);
+
+    QString str;
+    QCOMPARE(str = [&](){
+        QRegularExpression re(searchedPadding);
+        QRegularExpressionMatch match = re.match(mListWidget->styleSheet());
+        if (match.hasMatch()) {
+            QString str = match.captured();
+            return str;
+        }
+        QString none = "None";
+        return none;
+    }(), searchedPadding);
+}
 
 QTEST_MAIN(Test)
 #include "list_widget.moc"
