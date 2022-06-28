@@ -3,22 +3,33 @@ on:
     branches:
       - master
       - dev
-      
+env:
+  Path_to_qt6: /home/embrace0feternity/Qt/6.2.2/gcc_64
+  Build_dir: cmake-build-debug
+
 jobs:
-  hello_world_job:
+  build:
     runs-on: self-hosted
-    name: build 
     steps:
       - uses: actions/checkout@v1
       - name: build
         run: |
           echo "Start build"
           ls -la
-          mkdir cmake-build-debug
+          mkdir $Build_dir
           cd cmake-build-debug
-          cmake ..
+          cmake -DCMAKE_PREFIX_PATH="$Path_to_qt6" ..
           cmake --build .
+          ls -ls
+  test:
+    runs-on: self-hosted 
+    needs: build
+    steps:
+      - run: |
           ls -la
+          cd $Build_dir
+          ls -la
+          ctest
           
       
  
