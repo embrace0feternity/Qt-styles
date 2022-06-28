@@ -19,6 +19,7 @@ QListWidget::item:selected {
     border-style: solid;
     border-radius: 0;
     margin: 5 20 5 20;
+    padding: 2 13 2 13;
 }
 
 
@@ -28,6 +29,7 @@ QListWidget::item:selected:active {
     border-style: solid;
     border-radius: 0;
     margin: 0 0 0 0;
+    padding: 2 13 2 13;
 }
 
 QListWidget::item:selected:!active {
@@ -36,5 +38,6 @@ QListWidget::item:selected:!active {
     border-style: solid;
     border-radius: 0;
     margin: 0 0 0 0;
+    padding: 2 13 2 13;
 }
 
