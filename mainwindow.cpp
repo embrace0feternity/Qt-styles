@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     [[maybe_unused]] StyleListWidget *mStyleListWidget = new StyleListWidget(listWidget);
     QColor color{0xd9, 0x27, 0x27};
-    mStyleListWidget->setListWidgetBackground(color);
+    mStyleListWidget->setBackground(color);
     qDebug() << listWidget->styleSheet();
     QStringList stringList = {"#d92727", // red
                              "#6023c2",  // dark bluer
@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
                              "#cf9e23",  // orange
                              "#000000"}; // black
 
-    mStyleListWidget->setListWidgetItemSelectedBackground(QColor{0x1c, 0xbd, 0x52});
+    mStyleListWidget->setItemSelectedBackground(QColor{0x1c, 0xbd, 0x52});
 
     qDebug() << "\n\n" << mStyleListWidget->getStyleSheet();
 
@@ -33,8 +33,13 @@ MainWindow::MainWindow(QWidget *parent)
         listWidget->setItemWidget(i, p);
 
         QColor color(str);
-        mStyleListWidget->setListWidgetItemBackground(color);
+        mStyleListWidget->setItemBackground(color);
     }
+
+
+//    mStyleListWidget->setBorderWidth(15);
+//    mStyleListWidget->setItemSelectedActiveBorderWidth(10);
+
 
     qDebug() << "\n\n" << mStyleListWidget->getStyleSheet();
     ui->vert->addWidget(listWidget);

@@ -21,64 +21,26 @@ namespace e0fe {
             apply();
         }
 
-        StyleListWidget::StyleListWidget(QListWidget *listWidget) : mListWidget(listWidget) {
-            QFile file{"style_list_widget.qss"};
-            file.open(QFile::ReadOnly);
-            mStyleSheet = mStyleSheetCopy = file.readAll();
-            mListWidget->setStyleSheet(mStyleSheet);
-        }
-
-        void StyleListWidget::setListWidgetBackground(const QColor &color) {
-            QRegularExpression reListWidgetBackground( "QListWidget {(.)(\\ ){4}",
-                                                        QRegularExpression::DotMatchesEverythingOption);
-            QString search = "background: ";
-            replaceStyleSheet(reListWidgetBackground, search, color.name());
-        }
-
-        void StyleListWidget::setListWidgetItemBackground(const QColor &color) {
-            QRegularExpression reListWidgetBackground( "QListWidget::item {(.)(\\ ){4}",
-                                                       QRegularExpression::DotMatchesEverythingOption);
-            QString search = "background: ";
-            replaceStyleSheet(reListWidgetBackground, search, color.name());
-        }
-
-        void StyleListWidget::setListWidgetItemSelectedBackground(const QColor &color) {
-            QRegularExpression reListWidgetSelectedBackground( "QListWidget::item:selected {(.)(\\ ){4}",
-                                                               QRegularExpression::DotMatchesEverythingOption);
-            QString search = "background: ";
-            replaceStyleSheet(reListWidgetSelectedBackground, search, color.name());
-        }
-
-        void StyleListWidget::setListWidgetItemSelectedActiveBackground(const QColor &color)
+        void StyleListWidget::checkBorderWidth(QRegularExpression &regex, uint64_t px)
         {
-            QRegularExpression reListWidgetItemSelectedActive( "QListWidget::item:selected:active {(.)(\\ ){4}",
-                                                               QRegularExpression::DotMatchesEverythingOption);
-            QString search = "background: ";
-            replaceStyleSheet(reListWidgetItemSelectedActive, search, color.name());
+            if (px <= 0)
+            {
+                 return;
+            }
+            QString borderWidth = QString::number(px);
+            QString search = "border-width: ";
+            replaceStyleSheet(regex, search, borderWidth);
         }
 
-        void StyleListWidget::setListWidgetItemSelectedNoActiveBackground(const QColor &color)
+        void StyleListWidget::setPadding(QRegularExpression &regex, uint64_t top, uint64_t left, uint64_t bottom, uint64_t right)
         {
-            QRegularExpression reListWidgetItemSelectedActive( "QListWidget::item:selected:!active {(.)(\\ ){4}",
-                                                               QRegularExpression::DotMatchesEverythingOption);
-            QString search = "background: ";
-            replaceStyleSheet(reListWidgetItemSelectedActive, search, color.name());
-        }
+            QString temp = QString::number(left) + " " +
+                    QString::number(top) + " " +
+                    QString::number(right) + " " +
+                    QString::number(bottom);
 
-        void StyleListWidget::setListWidgetBorderWidth(uint64_t px) {
-            QString boardWidth = QString::number(px);
-            QRegularExpression reListWidgetBorderWidth( "QListWidget {(.)(\\ ){4}",
-                                                        QRegularExpression::DotMatchesEverythingOption);
-            QString search = "border-width: ";
-            replaceStyleSheet(reListWidgetBorderWidth, search, boardWidth);
-        }
-
-        void StyleListWidget::setListWidgetItemBorderWidth(uint64_t px) {
-            QString boardWidth = QString::number(px);
-            QRegularExpression reListWidgetBorderWidth( "QListWidget::item {(.)(\\ ){4}",
-                                                        QRegularExpression::DotMatchesEverythingOption);
-            QString search = "border-width: ";
-            replaceStyleSheet(reListWidgetBorderWidth, search, boardWidth);
+            QString search = "padding: ";
+            replaceStyleSheet(regex, search, temp);
         }
 
         void StyleListWidget::setMargins(QRegularExpression &regex, const QMargins &margin) {
@@ -91,39 +53,230 @@ namespace e0fe {
             replaceStyleSheet(regex, search, temp);
         }
 
-        void StyleListWidget::setListWidgetMargin(const QMargins &margin) {
-            QRegularExpression reListWidgetMargin( "QListWidget {(.)(\\ ){4}",
-                                                   QRegularExpression::DotMatchesEverythingOption);
-            setMargins(reListWidgetMargin, margin);
+        StyleListWidget::StyleListWidget(QListWidget *listWidget) : mListWidget(listWidget) {
+            QFile file{"style_list_widget.qss"};
+            file.open(QFile::ReadOnly);
+            mStyleSheet = mStyleSheetCopy = file.readAll();
+            mListWidget->setStyleSheet(mStyleSheet);
         }
 
-        void StyleListWidget::setListWidgetItemMargin(const QMargins &margin) {
-            QRegularExpression reListWidgetMargin( "QListWidget::item {(.)(\\ ){4}",
-                                                   QRegularExpression::DotMatchesEverythingOption);
-            setMargins(reListWidgetMargin, margin);
+        void StyleListWidget::setBackground(const QColor &color) {
+            QRegularExpression reListWidget( "QListWidget {(.)(\\ ){4}",
+                                                        QRegularExpression::DotMatchesEverythingOption);
+            QString search = "background: ";
+            replaceStyleSheet(reListWidget, search, color.name());
         }
 
-        void StyleListWidget::setListWidgetItemSelectedMargin(const QMargins &margin)
+        void StyleListWidget::setItemBackground(const QColor &color) {
+            QRegularExpression reListWidget( "QListWidget::item {(.)(\\ ){4}",
+                                                       QRegularExpression::DotMatchesEverythingOption);
+            QString search = "background: ";
+            replaceStyleSheet(reListWidget, search, color.name());
+        }
+
+        void StyleListWidget::setItemSelectedBackground(const QColor &color) {
+            QRegularExpression reListWidget( "QListWidget::item:selected {(.)(\\ ){4}",
+                                                               QRegularExpression::DotMatchesEverythingOption);
+            QString search = "background: ";
+            replaceStyleSheet(reListWidget, search, color.name());
+        }
+
+        void StyleListWidget::setItemSelectedActiveBackground(const QColor &color)
         {
-            QRegularExpression reListWidgetMargin( "QListWidget::item:selected {(.)(\\ ){4}",
-                                                   QRegularExpression::DotMatchesEverythingOption);
-            setMargins(reListWidgetMargin, margin);
+            QRegularExpression reListWidget( "QListWidget::item:selected:active {(.)(\\ ){4}",
+                                                               QRegularExpression::DotMatchesEverythingOption);
+            QString search = "background: ";
+            replaceStyleSheet(reListWidget, search, color.name());
         }
 
-        void StyleListWidget::setListWidgetItemSelectedActiveMargin(const QMargins &margin)
+        void StyleListWidget::setItemSelectedNoActiveBackground(const QColor &color)
         {
-            QRegularExpression reListWidgetMargin( "QListWidget::item:selected:active {(.)(\\ ){4}",
-                                                   QRegularExpression::DotMatchesEverythingOption);
-            setMargins(reListWidgetMargin, margin);
+            QRegularExpression reListWidget( "QListWidget::item:selected:!active {(.)(\\ ){4}",
+                                                               QRegularExpression::DotMatchesEverythingOption);
+            QString search = "background: ";
+            replaceStyleSheet(reListWidget, search, color.name());
         }
 
-        void StyleListWidget::setListWidgetItemSelectedNoActiveMargin(const QMargins &margin)
+        void StyleListWidget::setBorderWidth(uint64_t px) {
+            QRegularExpression reListWidget( "QListWidget {(.)(\\ ){4}",
+                                                        QRegularExpression::DotMatchesEverythingOption);
+            checkBorderWidth(reListWidget, px);
+        }
+
+        void StyleListWidget::setItemBorderWidth(uint64_t px) {
+            QRegularExpression reListWidget( "QListWidget::item {(.)(\\ ){4}",
+                                                        QRegularExpression::DotMatchesEverythingOption);
+            checkBorderWidth(reListWidget, px);
+        }
+
+        void StyleListWidget::setItemSelectedBorderWidth(uint64_t px)
         {
-            QRegularExpression reListWidgetMargin( "QListWidget::item:selected:!active {(.)(\\ ){4}",
-                                                   QRegularExpression::DotMatchesEverythingOption);
-            setMargins(reListWidgetMargin, margin);
+            QRegularExpression reListWidget( "QListWidget::item:selected {(.)(\\ ){4}",
+                                                        QRegularExpression::DotMatchesEverythingOption);
+            checkBorderWidth(reListWidget, px);
         }
 
+        void StyleListWidget::setItemSelectedActiveBorderWidth(uint64_t px)
+        {
+            QRegularExpression reListWidget( "QListWidget::item:selected:active {(.)(\\ ){4}",
+                                                        QRegularExpression::DotMatchesEverythingOption);
+            checkBorderWidth(reListWidget, px);
+        }
+
+        void StyleListWidget::setItemSelectedNoActiveBorderWidth(uint64_t px)
+        {
+            QRegularExpression reListWidget( "QListWidget::item:selected:!active {(.)(\\ ){4}",
+                                                        QRegularExpression::DotMatchesEverythingOption);
+            checkBorderWidth(reListWidget, px);
+        }
+
+        void StyleListWidget::setBorderRadius(uint64_t px)
+        {
+            QRegularExpression reListWidget( "QListWidget {(.)(\\ ){4}",
+                                                        QRegularExpression::DotMatchesEverythingOption);
+            QString search = "border-radius: ";
+            replaceStyleSheet(reListWidget, search, QString::number(px));
+        }
+
+        void StyleListWidget::setItemBorderRadius(uint64_t px)
+        {
+            QRegularExpression reListWidget( "QListWidget::item {(.)(\\ ){4}",
+                                                        QRegularExpression::DotMatchesEverythingOption);
+            QString search = "border-radius: ";
+            replaceStyleSheet(reListWidget, search, QString::number(px));
+        }
+
+        void StyleListWidget::setItemSelectedBorderRadius(uint64_t px)
+        {
+            QRegularExpression reListWidget( "QListWidget::item:selected {(.)(\\ ){4}",
+                                                        QRegularExpression::DotMatchesEverythingOption);
+            QString search = "border-radius: ";
+            replaceStyleSheet(reListWidget, search, QString::number(px));
+        }
+
+        void StyleListWidget::setItemSelectedActiveBorderRadius(uint64_t px)
+        {
+            QRegularExpression reListWidget( "QListWidget::item:selected:active {(.)(\\ ){4}",
+                                                        QRegularExpression::DotMatchesEverythingOption);
+            QString search = "border-radius: ";
+            replaceStyleSheet(reListWidget, search, QString::number(px));
+        }
+
+        void StyleListWidget::setItemSelectedNoActiveBorderRadius(uint64_t px)
+        {
+            QRegularExpression reListWidget( "QListWidget::item:selected:!active {(.)(\\ ){4}",
+                                                        QRegularExpression::DotMatchesEverythingOption);
+            QString search = "border-radius: ";
+            replaceStyleSheet(reListWidget, search, QString::number(px));
+        }
+
+        void StyleListWidget::setMargin(const QMargins &margin) {
+            QRegularExpression reListWidget( "QListWidget {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            setMargins(reListWidget, margin);
+        }
+
+        void StyleListWidget::setMargin(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right)
+        {
+            QRegularExpression reListWidget( "QListWidget {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            QMargins margin(left, top, right, bottom);
+            setMargins(reListWidget, margin);
+        }
+
+        void StyleListWidget::setItemMargin(const QMargins &margin) {
+            QRegularExpression reListWidget( "QListWidget::item {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            setMargins(reListWidget, margin);
+        }
+
+        void StyleListWidget::setItemMargin(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right)
+        {
+            QRegularExpression reListWidget( "QListWidget::item {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            QMargins margin(left, top, right, bottom);
+            setMargins(reListWidget, margin);
+        }
+
+        void StyleListWidget::setItemSelectedMargin(const QMargins &margin)
+        {
+            QRegularExpression reListWidget( "QListWidget::item:selected {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            setMargins(reListWidget, margin);
+        }
+
+        void StyleListWidget::setItemSelectedMargin(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right)
+        {
+            QRegularExpression reListWidget( "QListWidget::item:selected {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            QMargins margin(left, top, right, bottom);
+            setMargins(reListWidget, margin);
+        }
+
+        void StyleListWidget::setItemSelectedActiveMargin(const QMargins &margin)
+        {
+            QRegularExpression reListWidget( "QListWidget::item:selected:active {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            setMargins(reListWidget, margin);
+        }
+
+        void StyleListWidget::setItemSelectedActiveMargin(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right)
+        {
+            QRegularExpression reListWidget( "QListWidget::item:selected:active {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            QMargins margin(left, top, right, bottom);
+            setMargins(reListWidget, margin);
+        }
+
+        void StyleListWidget::setItemSelectedNoActiveMargin(const QMargins &margin)
+        {
+            QRegularExpression reListWidget( "QListWidget::item:selected:!active {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            setMargins(reListWidget, margin);
+        }
+
+        void StyleListWidget::setItemSelectedNoActiveMargin(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right)
+        {
+            QRegularExpression reListWidget( "QListWidget::item:selected:!active {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            QMargins margin(left, top, right, bottom);
+            setMargins(reListWidget, margin);
+        }
+
+        void StyleListWidget::setPadding(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right)
+        {
+            QRegularExpression reListWidget( "QListWidget {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            setPadding(reListWidget, left, top, right, bottom);
+        }
+
+        void StyleListWidget::setItemPadding(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right)
+        {
+            QRegularExpression reListWidget( "QListWidget::item {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            setPadding(reListWidget, left, top, right, bottom);
+        }
+
+        void StyleListWidget::setItemPaddingSelected(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right)
+        {
+            QRegularExpression reListWidget( "QListWidget::item:selected {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            setPadding(reListWidget, left, top, right, bottom);
+        }
+
+        void StyleListWidget::setItemPaddingSelectedActive(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right)
+        {
+            QRegularExpression reListWidget( "QListWidget::item:selected:active {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            setPadding(reListWidget, left, top, right, bottom);
+        }
+
+        void StyleListWidget::setItemPaddingSelectedNoActive(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right)
+        {
+            QRegularExpression reListWidget( "QListWidget::item:selected:!active {(.)(\\ ){4}",
+                                                   QRegularExpression::DotMatchesEverythingOption);
+            setPadding(reListWidget, left, top, right, bottom);
+        }
 
         void StyleListWidget::apply() {
             mListWidget->setStyleSheet(mStyleSheet);
