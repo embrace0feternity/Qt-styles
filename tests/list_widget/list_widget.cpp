@@ -26,20 +26,25 @@ private slots:
     void test() {
         QVERIFY(true);
     }
-    void checkStyleCreate();                            // 1
-    void checkSetCssStyle();                            // 2
-    void checksetBackground();                          // 3
-    void setItemBackground();                           // 4
-    void setListWidgetItemSelectedBackground();         // 5
-    void setListWidgetItemSelectedActiveBackground();   // 6
-    void setListWidgetItemSelectedNoActiveBackground(); // 7
+    void checkStyleCreate();
+    void checkSetCssStyle();
+    void checksetBackground();
+    void setItemBackground();
+    void setListWidgetItemSelectedBackground();
+    void setListWidgetItemSelectedActiveBackground();
+    void setListWidgetItemSelectedNoActiveBackground();
 
-    void checkSetListWidgetMargin_data();
-    void checkSetListWidgetMargin();
+    void checkSetMargin_data();
+    void checkSetMargin();
 
-    void checkSetListWidgetPadding_data();
-    void checkSetListWidgetPadding();
+    void checkSetPadding_data();
+    void checkSetPadding();
 
+    void checkSetBorderWidth_data();
+    void checkSetBorderWidth();
+
+    void checkSetBorderRadius_data();
+    void checkSetBorderRadius();
 };
 
 void Test::initTestCase()
@@ -64,13 +69,11 @@ void Test::checkStyleCreate()
 
 void Test::checkSetCssStyle()
 {
-    QCOMPARE(mListWidget->contentsMargins(), QMargins(3, 20, 3, 20));
-
     QString temp = "background: #7872D8;";
     qsizetype isConsisted = mListWidget->styleSheet().indexOf(temp, 0);
     QVERIFY(isConsisted != -1);
 
-    temp = "border: none;";
+    temp = "border-width: 0;";
     isConsisted = mListWidget->styleSheet().indexOf(temp, 0);
     QVERIFY(isConsisted != -1);
 }
@@ -164,7 +167,7 @@ void Test::setListWidgetItemSelectedNoActiveBackground() {
     QVERIFY(isConsisted == -1);
 }
 
-void Test::checkSetListWidgetMargin_data()
+void Test::checkSetMargin_data()
 {
     QTest::addColumn<QMargins>("setMargins");
     QTest::addColumn<QString>("searchedMargins");
@@ -175,7 +178,7 @@ void Test::checkSetListWidgetMargin_data()
     QTest::newRow("listWidgetMargin") << QMargins{5,5,5,5} << "margin: 5 5 5 5;";
 }
 
-void Test::checkSetListWidgetMargin()
+void Test::checkSetMargin()
 {
     QFETCH(QMargins, setMargins);
     QFETCH(QString, searchedMargins);
@@ -199,24 +202,24 @@ void Test::checkSetListWidgetMargin()
     }(), searchedMargins);
 }
 
-void Test::checkSetListWidgetPadding_data()
+void Test::checkSetPadding_data()
 {
     QTest::addColumn<QString>("searchedPadding");
-    QTest::newRow("listWidgetMargin") << "padding: 1 1 1 1;";
-    QTest::newRow("listWidgetMargin") << "padding: 2 2 2 2;";
-    QTest::newRow("listWidgetMargin") << "padding: 3 3 3 3;";
-    QTest::newRow("listWidgetMargin") << "padding: 4 4 4 4;";
-    QTest::newRow("listWidgetMargin") << "padding: 5 5 5 5;";
+    QTest::newRow("listWidgetPadding") << "padding: 1 1 1 1;";
+    QTest::newRow("listWidgetPadding") << "padding: 2 2 2 2;";
+    QTest::newRow("listWidgetPadding") << "padding: 3 3 3 3;";
+    QTest::newRow("listWidgetPadding") << "padding: 4 4 4 4;";
+    QTest::newRow("listWidgetPadding") << "padding: 5 5 5 5;";
 }
 
-void Test::checkSetListWidgetPadding()
+void Test::checkSetPadding()
 {
     QFETCH(QString, searchedPadding);
     mStyleListWidget->setPadding(1,1,1,1);
-    mStyleListWidget->setPaddingItem(2,2,2,2);
-    mStyleListWidget->setPaddingItemSelected(3,3,3,3);
-    mStyleListWidget->setPaddingItemSelectedActive(4,4,4,4);
-    mStyleListWidget->setPaddingItemSelectedNoActive(5,5,5,5);
+    mStyleListWidget->setItemPadding(2,2,2,2);
+    mStyleListWidget->setItemPaddingSelected(3,3,3,3);
+    mStyleListWidget->setItemPaddingSelectedActive(4,4,4,4);
+    mStyleListWidget->setItemPaddingSelectedNoActive(5,5,5,5);
     QRegularExpression re( "QListWidget {(.)(\\ ){4}", QRegularExpression::DotMatchesEverythingOption);
 
     QString str;
@@ -230,6 +233,74 @@ void Test::checkSetListWidgetPadding()
         QString none = "None";
         return none;
     }(), searchedPadding);
+}
+
+void Test::checkSetBorderWidth_data()
+{
+    QTest::addColumn<QString>("searchedBorderWidht");
+    QTest::newRow("listWidgetBorderWidht") << "border-width: 10;";
+    QTest::newRow("listWidgetBorderWidht") << "border-width: 5;";
+    QTest::newRow("listWidgetBorderWidht") << "border-width: 3;";
+    QTest::newRow("listWidgetBorderWidht") << "border-width: 0;";
+    QTest::newRow("listWidgetBorderWidht") << "border-width: 12;";
+}
+
+void Test::checkSetBorderWidth()
+{
+    QFETCH(QString, searchedBorderWidht);
+    mStyleListWidget->setBorderWidth(10);
+    mStyleListWidget->setItemBorderWidth(5);
+    mStyleListWidget->setItemSelectedBorderWidth(3);
+    mStyleListWidget->setItemSelectedActiveBorderWidth(0);
+    mStyleListWidget->setItemSelectedNoActiveBorderWidth(12);
+    qDebug() << "\n\n" << mStyleListWidget->getStyleSheet() << "\n\n";
+    QRegularExpression re( "QListWidget {(.)(\\ ){4}", QRegularExpression::DotMatchesEverythingOption);
+
+    QString str;
+    QCOMPARE(str = [&](){
+        QRegularExpression re(searchedBorderWidht);
+        QRegularExpressionMatch match = re.match(mListWidget->styleSheet());
+        if (match.hasMatch()) {
+            QString str = match.captured();
+            return str;
+        }
+        QString none = "None";
+        return none;
+    }(), searchedBorderWidht);
+}
+
+void Test::checkSetBorderRadius_data()
+{
+    QTest::addColumn<QString>("searchedBorderRadius");
+    QTest::newRow("listWidgetBorderRadius") << "border-radius: 1;";
+    QTest::newRow("listWidgetBorderRadius") << "border-radius: 2;";
+    QTest::newRow("listWidgetBorderRadius") << "border-radius: 3;";
+    QTest::newRow("listWidgetBorderRadius") << "border-radius: 4;";
+    QTest::newRow("listWidgetBorderRadius") << "border-radius: 5;";
+}
+
+void Test::checkSetBorderRadius()
+{
+    QFETCH(QString, searchedBorderRadius);
+    mStyleListWidget->setBorderRadius(1);
+    mStyleListWidget->setItemBorderRadius(2);
+    mStyleListWidget->setItemSelectedBorderRadius(3);
+    mStyleListWidget->setItemSelectedActiveBorderRadius(4);
+    mStyleListWidget->setItemSelectedNoActiveBorderRadius(5);
+    qDebug() << "\n\n" << mStyleListWidget->getStyleSheet() << "\n\n";
+    QRegularExpression re( "QListWidget {(.)(\\ ){4}", QRegularExpression::DotMatchesEverythingOption);
+
+    QString str;
+    QCOMPARE(str = [&](){
+        QRegularExpression re(searchedBorderRadius);
+        QRegularExpressionMatch match = re.match(mListWidget->styleSheet());
+        if (match.hasMatch()) {
+            QString str = match.captured();
+            return str;
+        }
+        QString none = "None";
+        return none;
+    }(), searchedBorderRadius);
 }
 
 QTEST_MAIN(Test)

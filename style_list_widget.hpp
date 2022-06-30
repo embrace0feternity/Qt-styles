@@ -21,7 +21,7 @@ namespace e0fe {
         void replaceStyleSheet(QRegularExpression &regex, QStringView searh, const QString &replacedStr);
         void setMargins(QRegularExpression &regex, const QMargins &margin);
         void checkBorderWidth(QRegularExpression &regex, uint64_t px);
-        void setPadding(QRegularExpression &regex, uint64_t left, uint64_t top, uint64_t right, uint64_t bottom);
+        void setPadding(QRegularExpression &regex, uint64_t top, uint64_t left, uint64_t bottom, uint64_t right);
 
     public:
         StyleListWidget(QListWidget *listWidget);
@@ -44,21 +44,21 @@ namespace e0fe {
         void setItemSelectedNoActiveBorderRadius(uint64_t px);
 
         void setMargin(const QMargins &margin);
-        void setMargin(uint64_t left, uint64_t top, uint64_t right, uint64_t bottom);
+        void setMargin(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right);
         void setItemMargin(const QMargins &margin);
-        void setItemMargin(uint64_t left, uint64_t top, uint64_t right, uint64_t bottom);
+        void setItemMargin(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right);
         void setItemSelectedMargin(const QMargins &margin);
-        void setItemSelectedMargin(uint64_t left, uint64_t top, uint64_t right, uint64_t bottom);
+        void setItemSelectedMargin(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right);
         void setItemSelectedActiveMargin(const QMargins &margin);
-        void setItemSelectedActiveMargin(uint64_t left, uint64_t top, uint64_t right, uint64_t bottom);
+        void setItemSelectedActiveMargin(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right);
         void setItemSelectedNoActiveMargin(const QMargins &margin);
-        void setItemSelectedNoActiveMargin(uint64_t left, uint64_t top, uint64_t right, uint64_t bottom);
+        void setItemSelectedNoActiveMargin(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right);
 
-        void setPadding(uint64_t left, uint64_t top, uint64_t right, uint64_t bottom);
-        void setPaddingItem(uint64_t left, uint64_t top, uint64_t right, uint64_t bottom);
-        void setPaddingItemSelected(uint64_t left, uint64_t top, uint64_t right, uint64_t bottom);
-        void setPaddingItemSelectedActive(uint64_t left, uint64_t top, uint64_t right, uint64_t bottom);
-        void setPaddingItemSelectedNoActive(uint64_t left, uint64_t top, uint64_t right, uint64_t bottom);
+        void setPadding(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right);
+        void setItemPadding(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right);
+        void setItemPaddingSelected(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right);
+        void setItemPaddingSelectedActive(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right);
+        void setItemPaddingSelectedNoActive(uint64_t top, uint64_t left, uint64_t bottom, uint64_t right);
 
         void apply();
 

@@ -36,6 +36,11 @@ MainWindow::MainWindow(QWidget *parent)
         mStyleListWidget->setItemBackground(color);
     }
 
+
+//    mStyleListWidget->setBorderWidth(15);
+//    mStyleListWidget->setItemSelectedActiveBorderWidth(10);
+
+
     qDebug() << "\n\n" << mStyleListWidget->getStyleSheet();
     ui->vert->addWidget(listWidget);
 }
