@@ -289,7 +289,6 @@ void Test::checkSetBorderRadius()
     mStyleListWidget->setItemSelectedBorderRadius(3);
     mStyleListWidget->setItemSelectedActiveBorderRadius(4);
     mStyleListWidget->setItemSelectedNoActiveBorderRadius(5);
-    qDebug() << "\n\n" << mStyleListWidget->getStyleSheet() << "\n\n";
     QRegularExpression re( "QListWidget {(.)(\\ ){4}", QRegularExpression::DotMatchesEverythingOption);
 
     QString str;
