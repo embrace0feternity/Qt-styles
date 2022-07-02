@@ -1,6 +1,6 @@
-function(generateExecution targetName)
+function(generateLibrary targetName)
     message("")
-    message("-- Start generate target ${targetName} (execution)")
+    message("-- Start generate target ${targetName} (static library)")
 
     set(prefix arg)
     set(noValue wErr wAll)
@@ -19,7 +19,7 @@ function(generateExecution targetName)
     endforeach()
 
     validateVariables(${prefix}_srcs)
-    add_executable(${targetName} ${${prefix}_srcs})
+    add_library(${targetName} ${${prefix}_srcs})
 
     includeLibsNDirs(${targetName} ${prefix}_libs ${prefix}_includeDirs)
 

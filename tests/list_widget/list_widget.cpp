@@ -1,7 +1,8 @@
 #include <QTest>
 #include <QLabel>
-#include "wrapper.hpp"
 #include <QPalette>
+
+#include "style_list_widget.hpp"
 
 static const QVector<QColor> colorVector = { QColor("#d92727"),     // red
                                              QColor("#6023c2"),     // dark blue
@@ -12,11 +13,13 @@ static const QVector<QColor> colorVector = { QColor("#d92727"),     // red
                                              QColor("#e6f25c"),     // yellow
                                            };
 
+using namespace e0fe::styles;
+
 class Test : public QObject {
     Q_OBJECT
 private:
     QListWidget *mListWidget;
-    WrapperStyleListWidget *mStyleListWidget;
+    StyleListWidget *mStyleListWidget;
 public:
     Test() = default;
     ~Test() = default;
@@ -50,7 +53,7 @@ private slots:
 void Test::initTestCase()
 {
     mListWidget = new QListWidget;
-    mStyleListWidget = new WrapperStyleListWidget{mListWidget};
+    mStyleListWidget = new StyleListWidget{mListWidget};
 }
 
 void Test::cleanupTestCase()
@@ -61,9 +64,8 @@ void Test::cleanupTestCase()
 
 void Test::checkStyleCreate()
 {
-    QCOMPARE(mListWidget, mStyleListWidget->getListWidget());
     QCOMPARE(mListWidget->styleSheet(), mStyleListWidget->getStyleSheet());
-    QCOMPARE(mListWidget->styleSheet(), mStyleListWidget->getStyleSheetCopy());
+    QCOMPARE(mListWidget->styleSheet(), mStyleListWidget->getPreviousStyleSheet());
     QVERIFY(mListWidget->styleSheet().size() != 0);
 }
 
@@ -94,7 +96,7 @@ void Test::checksetBackground()
     isConsisted = mListWidget->styleSheet().indexOf(temp, 0);
     QVERIFY(isConsisted != -1);
 
-    QVERIFY(mStyleListWidget->getStyleSheetCopy() != mStyleListWidget->getStyleSheet());
+    QVERIFY(mStyleListWidget->getPreviousStyleSheet() != mStyleListWidget->getStyleSheet());
 }
 
 void Test::setItemBackground()
@@ -102,7 +104,7 @@ void Test::setItemBackground()
     QColor pink{0xbf, 0x22, 0xb0};
     mStyleListWidget->setItemBackground(pink);
 
-    QVERIFY(mStyleListWidget->getStyleSheetCopy() != mStyleListWidget->getStyleSheet());
+    QVERIFY(mStyleListWidget->getPreviousStyleSheet() != mStyleListWidget->getStyleSheet());
 
     QString temp = "background: #bf22b0;";
     qsizetype isConsisted = mListWidget->styleSheet().indexOf(temp, 0);
@@ -115,14 +117,14 @@ void Test::setItemBackground()
     isConsisted = mListWidget->styleSheet().indexOf(temp, 0);
     QVERIFY(isConsisted != -1);
 
-    QVERIFY(mStyleListWidget->getStyleSheetCopy() != mStyleListWidget->getStyleSheet());
+    QVERIFY(mStyleListWidget->getPreviousStyleSheet() != mStyleListWidget->getStyleSheet());
 }
 
 void Test::setListWidgetItemSelectedBackground() {
     QColor pink{0xbf, 0x22, 0xb0};
     mStyleListWidget->setItemSelectedBackground(pink);
 
-    QVERIFY(mStyleListWidget->getStyleSheetCopy() != mStyleListWidget->getStyleSheet());
+    QVERIFY(mStyleListWidget->getPreviousStyleSheet() != mStyleListWidget->getStyleSheet());
 
     QString temp = "background: #bf22b0;";
     qsizetype isConsisted = mListWidget->styleSheet().indexOf(temp, 0);
@@ -138,7 +140,7 @@ void Test::setListWidgetItemSelectedBackground() {
     isConsisted = mListWidget->styleSheet().indexOf(temp, 0);
     QVERIFY(isConsisted != -1);
 
-    QVERIFY(mStyleListWidget->getStyleSheetCopy() != mStyleListWidget->getStyleSheet());
+    QVERIFY(mStyleListWidget->getPreviousStyleSheet() != mStyleListWidget->getStyleSheet());
 }
 
 void Test::setListWidgetItemSelectedActiveBackground() {
@@ -305,11 +307,3 @@ void Test::checkSetBorderRadius()
 
 QTEST_MAIN(Test)
 #include "list_widget.moc"
-
-
-
-
-
-
-
-

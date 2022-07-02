@@ -1,6 +1,5 @@
 function(includeLibsNDirs targetName libs includeDirs)
     message(STATUS "Link libraries and include directories:")
-    message("libs = ${${libs}}")
     if (${libs})
         target_link_libraries(${targetName} PRIVATE ${${libs}})
     endif()

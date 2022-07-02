@@ -1,5 +1,5 @@
 function(debugPrint msg)
-    if(debugInfo)
+    if(DEBUG_INFO)
         message("${msg}")
     endif()
 endfunction()
