@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 6.0.1, 2022-06-27T22:32:47. -->
+<!-- Written by QtCreator 6.0.1, 2022-07-02T11:10:34. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -69,12 +69,24 @@
    </valuemap>
    <valuemap type="QVariantMap" key="AutoTest.CheckStates">
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:Test">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetBorderRadius">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetBorderRadius_data">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetBorderWidth">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetBorderWidth_data">Checked</value>
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetCssStyle">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetListWidgetBackground">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetMargin">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetMargin_data">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetPadding">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkSetPadding_data">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checkStyleCreate">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:checksetBackground">Checked</value>
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:cleanupTestCase">Checked</value>
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:initTestCase">Checked</value>
-    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:setListWidgetItemBackground">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:listWidgetBorderRadius">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:listWidgetBorderWidht">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:listWidgetMargin">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:listWidgetPadding">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:setItemBackground">Checked</value>
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:setListWidgetItemSelectedActiveBackground">Checked</value>
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:setListWidgetItemSelectedBackground">Checked</value>
     <value type="Qt::CheckState" key="1@/home/embrace0feternity/works/qt_workspace/GUI/Styles/styles/tests/list_widget/list_widget.cpp:setListWidgetItemSelectedNoActiveBackground">Checked</value>
@@ -118,7 +130,8 @@
 -DQT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}
 -DCMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}
 -DCMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}
--DCMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}</value>
+-DCMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}
+-DDEBUG_INFO:STRING=True</value>
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/embrace0feternity/works/qt_workspace/GUI/Styles/build-styles-Desktop_Qt_6_2_2_GCC_64bit-Debug</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
@@ -311,23 +324,6 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">style</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.style</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">style</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/embrace0feternity/works/qt_workspace/GUI/Styles/build-styles-Desktop_Qt_6_2_2_GCC_64bit-Debug</value>
-   </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.1">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">styles_test</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.styles_test</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">styles_test</value>
@@ -338,7 +334,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/embrace0feternity/works/qt_workspace/GUI/Styles/build-styles-Desktop_Qt_6_2_2_GCC_64bit-Debug</value>
    </valuemap>
-   <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">2</value>
+   <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
  </data>
  <data>
